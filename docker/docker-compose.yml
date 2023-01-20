@@ -1,0 +1,45 @@
+version: "3.9"
+name: protein_app
+services:
+  mongo:
+    container_name: proteinapp-mongo
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: proteinapp
+    volumes:
+      - ./mongo:/etc/mongo
+    ports:
+      - 8001:27017
+  maria:
+    container_name: proteinapp-maria
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: proteinapp
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    ports:
+      - 8002:3306
+  redis:
+    container_name: proteinapp-redis
+    image: redis
+    restart: always
+    volumes:
+      - ./redis:/data
+    ports:
+      - 8003:6379
+  rabbitmq:
+    container_name: proteinapp-rabbitmq
+    image: rabbitmq:3-management
+    hostname: protein-rabbitmq
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: proteinapp
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+    ports:
+      - 8004:5672
+      - 8014:15672
