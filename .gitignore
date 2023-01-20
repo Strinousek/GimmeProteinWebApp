@@ -3,3 +3,4 @@ docker/mariadb
 docker/mongo
 docker/rabbitmq
 docker/redis
+node_modules/
