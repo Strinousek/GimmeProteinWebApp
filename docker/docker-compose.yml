@@ -1,5 +1,4 @@
 version: "3.9"
-name: protein_app
 services:
   mongo:
     container_name: proteinapp-mongo
