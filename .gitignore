@@ -1,4 +1,3 @@
-.node_modules
 docker/mariadb
 docker/mongo
 docker/rabbitmq
